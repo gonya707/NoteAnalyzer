@@ -1,6 +1,6 @@
 %en pruebas
 %bien, la idea es usar una ventana blackman con pocos ciclos para tener el
-%espectro lo mas suave posible, de ahi se sacarían las frecuencias
+%espectro lo mas suave posible, de ahi se sacarú}n las frecuencias
 %fácilmente con una funcion de máximos locales, con esas posiciones de los
 %máximos y cierto margen de incertidumbre se pueden "enventanar" las deltas
 %de los armónicos en un espectro con informaciones de amplitud más fiables
@@ -17,12 +17,11 @@ clear;
 close all;
 clc;
 
-[source fs]=wavread('la4guit.wav');
+[source fs]=wavread('Sounds/la4guit.wav');
 source=source(:,1);
 %fund=fundamental(source,fs);  %es una aproximacion, posiciones(1) es otra.
 fund=880;
 T=floor(fs/fund); %1 ciclo
-
 
 %%%obtencion de las frecuencias de armónicos con blackman%%%%%%%%%%
     [asdws, start]=max(source); %empiezo en un punto poco conflictivo
@@ -52,7 +51,7 @@ T=floor(fs/fund); %1 ciclo
     % habria que implementar dos niveles de desviación armónica, ya que puede fallar
     %comprobando solo 1. la idea es que con nota40 si hay un armonico
     %con desviacion 200 y el siguiente a 600, con un solo nivel ambos
-    %serían descartados, mientras que con 2 el 2º se salvaría
+    %serú}n descartados, mientras que con 2 el 2º se salvarú}
 
     %segunda especie: inarmonicos
      diferencias1=zeros(1,length(posiciones)-1);
@@ -84,12 +83,12 @@ T=floor(fs/fund); %1 ciclo
         
         
 %%%%%%pruebas con 200 ventanas %%%
-%con 300 podría funcionar bien, sigue habiendo mas de 4 ciclos por ventana
+%con 300 podrú} funcionar bien, sigue habiendo mas de 4 ciclos por ventana
 %en el peor de los casos y 'existe' attack en adsr
 vent=200;
 solapamiento=0.5;
 spw=floor(2*length(source)/(vent+2));
-vent1=U_enventanar_solapado(source,spw,solapamiento);
+vent1=overlapWindow(source,spw,solapamiento);
 for i=1:vent
     vent1(:,i)=vent1(:,i).*blackman(spw);
 end
