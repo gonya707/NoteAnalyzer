@@ -1,4 +1,8 @@
 %en pruebas
+% hacer una funcion para adsr a saco, otra para los adsr de armonicos que
+% saca este archivo, otro para salcar un array con frecuencias de
+% armonicos...
+
 %bien, la idea es usar una ventana blackman con pocos ciclos para tener el
 %espectro lo mas suave posible, de ahi se sacarú}n las frecuencias
 %fácilmente con una funcion de máximos locales, con esas posiciones de los
